@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Details | Smart IT Asset Intelligence</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <nav class="sidebar">
+            <div class="sidebar-header"><h2>AssetIntel</h2></div>
+            <ul class="nav-links">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li class="active"><a href="assets.html">Assets</a></li>
+                <li><a href="add-asset.html">Add Asset</a></li>
+                <li><a href="employees.html">Employees</a></li>
+                <li><a href="maintenance.html">Maintenance</a></li>
+                <li><a href="transfers.html">Transfers</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
+            </ul>
+        </nav>
+        <main class="main-content">
+            <header class="top-bar">
+                <h1>Asset Details <span id="assetCodeTitle"></span></h1>
+                <a href="assets.html" class="btn btn-secondary">Back to Assets</a>
+            </header>
+            
+            <div class="details-grid">
+                <div class="glass-panel">
+                    <h3>Asset Identity</h3>
+                    <div id="identityDetails"></div>
+                </div>
+                <div class="glass-panel">
+                    <h3>Financial & Lifecycle (TCO)</h3>
+                    <div id="financialDetails"></div>
+                </div>
+                <div class="glass-panel">
+                    <h3>Asset Health Intelligence</h3>
+                    <div class="health-score-container" id="healthScoreDisplay">
+                        <!-- Dynamic -->
+                    </div>
+                    <ul class="risk-factors" id="riskFactorsList"></ul>
+                </div>
+                <div class="glass-panel">
+                    <h3>Lifecycle Recommendation</h3>
+                    <div id="lifecycleRecommendation"></div>
+                </div>
+                <div class="glass-panel full-width">
+                    <h3>Maintenance History</h3>
+                    <table class="data-table">
+                        <thead><tr><th>Date</th><th>Type</th><th>Description</th><th>Cost</th><th>Status</th></tr></thead>
+                        <tbody id="maintenanceTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="js/api.js"></script>
+    <script src="js/shared.js"></script>
+    <script src="js/asset-details.js"></script>
+</body>
+</html>

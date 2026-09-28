@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Asset | Smart IT Asset Intelligence</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <nav class="sidebar">
+            <div class="sidebar-header"><h2>AssetIntel</h2></div>
+            <ul class="nav-links">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="assets.html">Assets</a></li>
+                <li class="active"><a href="add-asset.html">Add Asset</a></li>
+                <li><a href="employees.html">Employees</a></li>
+                <li><a href="maintenance.html">Maintenance</a></li>
+                <li><a href="transfers.html">Transfers</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
+            </ul>
+        </nav>
+        <main class="main-content">
+            <header class="top-bar">
+                <h1>Register New Asset</h1>
+            </header>
+            
+            <div class="glass-panel max-w-md">
+                <form id="addAssetForm">
+                    <div class="form-group">
+                        <label>Asset Code</label>
+                        <input type="text" id="assetCode" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Type</label>
+                        <select id="assetType">
+                            <option value="LAPTOP">Laptop</option>
+                            <option value="DESKTOP">Desktop</option>
+                            <option value="MONITOR">Monitor</option>
+                            <option value="MOBILE">Mobile</option>
+                            <option value="NETWORK_DEVICE">Network Device</option>
+                            <option value="PRINTER">Printer</option>
+                            <option value="OTHER">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Brand</label>
+                        <input type="text" id="brand" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Model</label>
+                        <input type="text" id="model" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Serial Number</label>
+                        <input type="text" id="serialNumber" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Purchase Date</label>
+                        <input type="date" id="purchaseDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Purchase Cost ($)</label>
+                        <input type="number" step="0.01" id="purchaseCost" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Warranty End Date</label>
+                        <input type="date" id="warrantyEndDate" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Asset</button>
+                    <div id="formMessage" style="margin-top: 15px;"></div>
+                </form>
+            </div>
+        </main>
+    </div>
+    <script src="js/api.js"></script>
+    <script src="js/shared.js"></script>
+    <script src="js/add-asset.js"></script>
+</body>
+</html>

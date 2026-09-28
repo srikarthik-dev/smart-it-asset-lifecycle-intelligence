@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assets | Smart IT Asset Intelligence</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <nav class="sidebar">
+            <div class="sidebar-header"><h2>AssetIntel</h2></div>
+            <ul class="nav-links">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li class="active"><a href="assets.html">Assets</a></li>
+                <li><a href="add-asset.html">Add Asset</a></li>
+                <li><a href="employees.html">Employees</a></li>
+                <li><a href="maintenance.html">Maintenance</a></li>
+                <li><a href="transfers.html">Transfers</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
+            </ul>
+        </nav>
+        <main class="main-content">
+            <header class="top-bar">
+                <h1>Asset Registry</h1>
+                <div class="user-info" id="userInfo"></div>
+            </header>
+            
+            <div class="glass-panel">
+                <div class="table-controls">
+                    <input type="text" id="searchInput" placeholder="Search by code, brand, model..." onkeyup="filterTable()">
+                </div>
+                <table class="data-table" id="assetsTable">
+                    <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th>Type</th>
+                            <th>Brand/Model</th>
+                            <th>Status</th>
+                            <th>Condition</th>
+                            <th>Assigned To</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="assetsTableBody">
+                        <!-- Loaded dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+    <script src="js/api.js"></script>
+    <script src="js/shared.js"></script>
+    <script src="js/assets.js"></script>
+</body>
+</html>
