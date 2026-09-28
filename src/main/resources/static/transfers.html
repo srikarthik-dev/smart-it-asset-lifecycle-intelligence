@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transfers | Smart IT Asset Intelligence</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <nav class="sidebar">
+            <div class="sidebar-header"><h2>AssetIntel</h2></div>
+            <ul class="nav-links">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="assets.html">Assets</a></li>
+                <li><a href="add-asset.html">Add Asset</a></li>
+                <li><a href="employees.html">Employees</a></li>
+                <li><a href="maintenance.html">Maintenance</a></li>
+                <li class="active"><a href="transfers.html">Transfers</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
+            </ul>
+        </nav>
+        <main class="main-content">
+            <header class="top-bar">
+                <h1>Transfer Asset</h1>
+            </header>
+            <div class="glass-panel max-w-md">
+                <form id="transferForm">
+                    <div class="form-group">
+                        <label>Asset ID</label>
+                        <input type="number" id="assetId" required placeholder="e.g. 1">
+                    </div>
+                    <div class="form-group">
+                        <label>New Employee ID</label>
+                        <input type="text" id="newEmployeeId" required placeholder="e.g. E004">
+                    </div>
+                    <div class="form-group">
+                        <label>New Location</label>
+                        <input type="text" id="newLocation" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Reason</label>
+                        <input type="text" id="reason" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Transfer Asset</button>
+                    <div id="formMessage" style="margin-top: 15px;"></div>
+                </form>
+            </div>
+        </main>
+    </div>
+    <script src="js/api.js"></script>
+    <script src="js/shared.js"></script>
+    <script src="js/transfers.js"></script>
+</body>
+</html>

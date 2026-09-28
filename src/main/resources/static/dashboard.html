@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Smart IT Asset Intelligence</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>AssetIntel</h2>
+            </div>
+            <ul class="nav-links">
+                <li class="active"><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="assets.html">Assets</a></li>
+                <li><a href="add-asset.html">Add Asset</a></li>
+                <!-- Demo limits full pages -->
+                <li><a href="#" onclick="logout()">Logout</a></li>
+            </ul>
+        </nav>
+        <main class="main-content">
+            <header class="top-bar">
+                <h1>Dashboard Summary</h1>
+                <div class="user-info" id="userInfo"></div>
+            </header>
+            
+            <div class="kpi-grid" id="kpiGrid">
+                <!-- KPIs will be injected here -->
+            </div>
+            
+            <div class="charts-grid">
+                <div class="chart-card glass-panel">
+                    <h3>Asset Health Overview</h3>
+                    <canvas id="healthChart"></canvas>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="js/api.js"></script>
+    <script src="js/shared.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
