@@ -1,0 +1,42 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: it_asset_mysql
+    environment:
+      MYSQL_DATABASE: it_asset_intelligence
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: apppassword
+      MYSQL_ROOT_PASSWORD: rootpassword
+    ports:
+      - "3307:3306"
+    volumes:
+      - it_asset_intelligence_mysql_data:/var/lib/mysql
+    networks:
+      - asset_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootpassword"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    container_name: it_asset_app
+    ports:
+      - "8080:8080"
+    environment:
+      DB_URL: jdbc:mysql://mysql:3306/it_asset_intelligence?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      DB_USERNAME: appuser
+      DB_PASSWORD: apppassword
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - asset_network
+
+networks:
+  asset_network:
+    driver: bridge
+
+volumes:
+  it_asset_intelligence_mysql_data:

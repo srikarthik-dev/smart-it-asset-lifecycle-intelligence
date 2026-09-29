@@ -51,27 +51,55 @@ Main tables include:
 - `GET /api/assets/{id}/health` - Execute the Asset Health Engine dynamically.
 
 ## Setup
-### Prerequisites
-- Java 17
-- Maven
-- MySQL 8.0+
 
-### Configuration
-1. Copy `src/main/resources/application.properties.example` to `src/main/resources/application.properties` (or set environment variables `MYSQL_USER` and `MYSQL_PASSWORD`) to configure your local MySQL connection.
-2. The application will auto-generate tables (`ddl-auto=update`) and populate realistic synthetic data from `data.sql`.
+### Quick Start with Docker (Recommended)
+You can run the entire application (MySQL Database + Spring Boot App + Frontend) using Docker Compose.
 
-### Run Instructions
 ```bash
-mvn clean compile
-mvn clean package
-java -jar target/asset-intelligence-0.0.1-SNAPSHOT.jar
-```
-Or run directly via maven:
-```bash
-./mvnw spring-boot:run
+git clone <repository-url>
+cd smart-it-asset-lifecycle-intelligence
+docker compose up --build
 ```
 
 Access the UI at: `http://localhost:8080/index.html`
+
+### Docker Architecture
+- **MySQL Container**: Runs MySQL 8.0, uses a named volume `it_asset_intelligence_mysql_data` for persistence, mapped internally to 3306.
+- **Spring Boot Container**: Builds the Maven project in a multi-stage `eclipse-temurin:17` container and exposes the app on port 8080.
+- Safe development credentials are automatically injected via Docker environment variables.
+
+### Managing the Docker Environment
+Run in the background:
+```bash
+docker compose up -d
+```
+
+Check status and logs:
+```bash
+docker compose ps
+docker compose logs app
+docker compose logs mysql
+```
+
+Stop the application safely (data is preserved):
+```bash
+docker compose down
+```
+
+**WARNING:** Destroy the application and the persistent database volume (this will wipe all data):
+```bash
+docker compose down -v
+```
+
+### Local Development (Without Docker)
+If you prefer to run it locally without Docker:
+1. Ensure Java 17 and Maven are installed.
+2. Ensure you have a local MySQL 8.0+ server running.
+3. Copy `src/main/resources/application.properties.example` to `src/main/resources/application.properties` and configure your local MySQL connection.
+4. Run via Maven:
+```bash
+./mvnw spring-boot:run
+```
 
 ## Testing
 Run unit and integration tests (which run in an isolated H2 environment using the `test` profile):

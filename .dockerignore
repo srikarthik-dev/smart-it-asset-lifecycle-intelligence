@@ -1,0 +1,9 @@
+.git
+.idea
+.vscode
+target
+*.log
+.DS_Store
+application.properties
+application-local.properties
+.env
